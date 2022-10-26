@@ -52,31 +52,29 @@ while playerIn or dealerIn:
         dealerIn = False
     else:
         dealCard(dealerHand)
-    if stayOrHint == '1':
-       playerIn = False
+    if stayOrHit == '1':
+        playerIn = False
     else:
-        dealCard(playerHand) >=21:
-            break
-    elif total(playerHand) >= 21:
+        dealCard(playerHand)
+    if total(playerHand) >=21:
         break
-
+    elif total(dealerHand) >=21:
+        break
 if total(playerHand) == 21:
-    print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)})
-    print(" Blackjack! You win!")
-
+    print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
+    print("Blackjack! You win!")
 elif total(dealerHand) == 21:
-        print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)})
-    print(" Blackjack! Dealer win!")
+    print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
+    print("Blackjack! Dealer wins!")
 elif total(playerHand) > 21:
-        print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)})
-    print(" You bust! Dealer win!")
+    print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
+    print("You busts! You win!")
 elif total(dealerHand) > 21:
-        print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)})
-    print(" Dealer busts! You win!")
+    print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
+    print("Dealer busts! Dealer wins")
 elif 21 - total(dealerHand) < 21 - total(playerHand):
-        print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)})
-    print(" Dealer win!")
+    print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
+    print("Dealer wins!")
 elif 21 - total(dealerHand) > 21 - total(playerHand):
-        print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)})
-    print(" You win!")
-
+    print(f"\nYou have {playerHand} for a total of {total(playerHand)} and the dealer has {dealerHand} for a total of {total(dealerHand)}")
+    print("You win")

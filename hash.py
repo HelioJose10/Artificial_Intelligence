@@ -30,7 +30,7 @@ def getHashFromFile(file):
             hash.update(mv[:n])
     return hash.hexdigest()
 
-hash = getHashFromFile("menu")
+hash = getHashFromFile("README.md")
 print("")
 print("------------------------------")
 print("Criar hash de um ficheiro:")

@@ -3,19 +3,28 @@ services:
   web:
     build: .
     ports: 
-      - "8080:8080"
+      - '8080:8080'
 
   database1:
     image: "mysql:latest"
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: filesA
-      
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
   database2:
     image: "mysql:latest"
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: filesB
+    ports:
+      - "3306:3306"
+    expose:
+      - '3306'
 
 networks:
   default:

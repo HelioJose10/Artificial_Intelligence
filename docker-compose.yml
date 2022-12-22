@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports: 
+      - "8080:8080"
+
+  database1:
+    image: "mysql:latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: filesA
+      
+  database2:
+    image: "mysql:latest"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: filesB
+
+networks:
+  default:
+    name: file-saving-network
+    #driver: custom-driver...

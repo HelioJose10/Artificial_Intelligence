@@ -10,4 +10,5 @@ COPY ./web/assets/images/brand/* /usr/share/nginx/html/
 COPY ./web/assets/js/*.js /usr/share/nginx/html/
 COPY ./web/assets/plugins/*.js /usr/share/nginx/html/
 COPY ./web/assets/plugins/sidemenu/*.js /usr/share/nginx/html/
+
 EXPOSE 80

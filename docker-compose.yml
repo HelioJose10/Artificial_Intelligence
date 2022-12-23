@@ -5,7 +5,7 @@ services:
     ports: 
       - '8080:8080'
 
-  database1:
+  databaseA:
     image: "mysql:latest"
     restart: always
     environment:
@@ -15,7 +15,10 @@ services:
       - '3306:3306'
     expose:
       - '3306'
-  database2:
+    volumes:
+      - mysqldb-vol/var/lib/mysql
+      - ./createsA.sql:/docker-entrypoint-initdb.d/createsA.sql
+  databaseB:
     image: "mysql:latest"
     restart: always
     environment:
@@ -25,8 +28,17 @@ services:
       - "3306:3306"
     expose:
       - '3306'
+    volumes:
+      - mysqldb-vol/var/lib/mysql
+      - ./createsB.sql:/docker-entrypoint-initdb.d/createsB.sql
 
 networks:
   default:
     name: file-saving-network
     #driver: custom-driver...
+
+volumes:
+  mysqldb-vol:
+    driver: local
+
+  

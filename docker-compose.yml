@@ -1,42 +1,47 @@
+version: '3'
 services:
-  web:
-    image: nginx:latest
-    build: .
-    ports: 
-      - '8080:8080'
-    networks:
-      - file-saving-network
+  #web:
+   # image: nginx 
+    #build: 
+      #context: .
+      #dockerfile: dockerfile
+    #ports: 
+     # - '8080:8080'
   databaseA:
     image: mysql:latest 
-    build: ./mysqlBuildA
+    build:
+      context: .
+      dockerfile: dockerfile.a
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: filesA
+      MYSQL_ROOT_HOST: '%'
     ports:
-      - '3306:3306'
-    expose:
-      - '3306'
+      - '3309:3306'
     volumes:
+      - dataA:/var/lib/mysql
       - ./createsA.sql:/docker-entrypoint-initdb.d/createsA.sql
-    networks:
-      - file-saving-network
   databaseB:
     image: mysql:latest 
-    build: ./mysqlBuildB
+    build:
+      context: .
+      dockerfile: dockerfile.b
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: filesB
-    #ports:
-      #- "3306:3306"
-    #expose:
-      #- '3306'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3308:3306"
     volumes:
+      - dataB:/var/lib/mysql
       - ./createsB.sql:/docker-entrypoint-initdb.d/createsB.sql
-    networks:
-      - file-saving-network
-networks:
 
-  file-saving-network: {}
+volumes:
+  dataA:
+    external: true
+  dataB:
+    external: true
 
+      

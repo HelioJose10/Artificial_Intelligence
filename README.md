@@ -1,9 +1,13 @@
 # PROJETO SISTEMAS DISTRIBUIDOS
 
+#to create the volume
+
+docker volume create --name=data
+
 #to build command
 
- docker build . -t sd-proj
+ docker-compose build
 
 #to run command
 
-docker run -it --rm -p 8081:80 sd-proj
+docker-compose up

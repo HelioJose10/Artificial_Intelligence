@@ -1,5 +1,0 @@
-FROM mysql
-
-COPY ./createsA.sql /docker/docker-entrypoint-initdb.d/
-
-ENTRYPOINT [ "docker-entrypoint-initdb.d" ]

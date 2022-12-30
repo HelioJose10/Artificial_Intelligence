@@ -1,5 +1,5 @@
-FROM mysql:latest
+FROM mysql
 
-COPY ./createsB.sql /docker-entrypoint-initdb.d/
+COPY ./createsB.sql /docker/docker-entrypoint-initdb.d/
 
 ENTRYPOINT [ "docker-entrypoint-initdb.d" ]

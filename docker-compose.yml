@@ -1,12 +1,14 @@
-version: '3'
 services:
   web:
+    image: nginx:latest
     build: .
     ports: 
       - '8080:8080'
-
+    networks:
+      - file-saving-network
   databaseA:
-    image: "mysql:latest"
+    image: mysql:latest 
+    build: ./mysqlBuildA
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -16,29 +18,25 @@ services:
     expose:
       - '3306'
     volumes:
-      - mysqldb-vol/var/lib/mysql
       - ./createsA.sql:/docker-entrypoint-initdb.d/createsA.sql
+    networks:
+      - file-saving-network
   databaseB:
-    image: "mysql:latest"
+    image: mysql:latest 
+    build: ./mysqlBuildB
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: filesB
-    ports:
-      - "3306:3306"
-    expose:
-      - '3306'
+    #ports:
+      #- "3306:3306"
+    #expose:
+      #- '3306'
     volumes:
-      - mysqldb-vol/var/lib/mysql
       - ./createsB.sql:/docker-entrypoint-initdb.d/createsB.sql
-
+    networks:
+      - file-saving-network
 networks:
-  default:
-    name: file-saving-network
-    #driver: custom-driver...
 
-volumes:
-  mysqldb-vol:
-    driver: local
+  file-saving-network: {}
 
-  

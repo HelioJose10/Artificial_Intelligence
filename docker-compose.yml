@@ -21,6 +21,9 @@ services:
     volumes:
       - dataA:/var/lib/mysql
       - ./createsA.sql:/docker-entrypoint-initdb.d/createsA.sql
+    depends_on:
+      databaseB:
+        condition: service_started
   databaseB:
     image: mysql:latest 
     build:

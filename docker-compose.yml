@@ -1,12 +1,14 @@
 version: '3'
 services:
-  #web:
-   # image: nginx 
-    #build: 
-      #context: .
-      #dockerfile: dockerfile
-    #ports: 
-     # - '8080:8080'
+  web:
+    image: nginx 
+    build: 
+      context: .
+      dockerfile: dockerfile
+    ports: 
+      - '8080:8080'
+    expose:
+      - 8080
   databaseA:
     image: mysql:latest 
     build:
@@ -43,5 +45,6 @@ volumes:
     external: true
   dataB:
     external: true
+      
 
       

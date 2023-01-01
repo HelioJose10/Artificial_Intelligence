@@ -8,18 +8,6 @@ print("Hash de um Texto:")
 print(hash)
 print("------------------------------")
 
-# Comparando 2 hashs
-texto = "senha123".encode("utf8")
-texto2 = "senha1234".encode("utf8")
-
-hash = md5(texto).hexdigest()
-hash2 = md5(texto2).hexdigest()
-print("")
-print("------------------------------")
-print("Comparando hash de dois textos:")
-print(hash == hash2)
-print("------------------------------")
-
 # Transformando arquivos em hash
 def getHashFromFile(file):
     hash = sha256()

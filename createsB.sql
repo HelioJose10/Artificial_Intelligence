@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS filesContentA,
-                     hashsA,
-                     updatesA,
-                     bcfilesContentA,
-                     bchashsA,
-                     bcupdatesA;
+DROP TABLE IF EXISTS filesContentA;
+DROP TABLE IF EXISTS hashsA;
+DROP TABLE IF EXISTS updatesA;
+DROP TABLE IF EXISTS bcfilesContentA;
+DROP TABLE IF EXISTS bchashsA;
+DROP TABLE IF EXISTS bcupdatesA;
 CREATE TABLE filesContentB(
     file_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     file_content LONGBLOB NOT NULL
@@ -31,12 +31,12 @@ CREATE TABLE updatesB(
 
 CREATE DATABASE backupB;
 USE backupB;
-DROP TABLE IF EXISTS filesContentA,
-                     hashsA,
-                     updatesA,
-                     bcfilesContentA,
-                     bchashsA,
-                     bcupdatesA;
+DROP TABLE IF EXISTS filesContentA;
+DROP TABLE IF EXISTS hashsA;
+DROP TABLE IF EXISTS updatesA;
+DROP TABLE IF EXISTS bcfilesContentA;
+DROP TABLE IF EXISTS bchashsA;
+DROP TABLE IF EXISTS bcupdatesA;
 
 CREATE TABLE bcfilesContentB(
     file_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

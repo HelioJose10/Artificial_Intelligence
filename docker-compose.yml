@@ -5,12 +5,11 @@ services:
     build: 
       dockerfile: dockerfile
     ports: 
-      - '8080:8080'
+      - '80:80'
   databaseA:
-    image: mysql:latest 
+    image: mysql 
     build:
-      context: .
-      dockerfile: dockerfile.a
+      dockerfile: docker-contextA/dockerfile.a
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
@@ -21,14 +20,10 @@ services:
     volumes:
       - dataA:/var/lib/mysql
       - ./createsA.sql:/docker-entrypoint-initdb.d/createsA.sql
-    depends_on:
-      databaseB:
-        condition: service_started
   databaseB:
     image: mysql:latest 
     build:
-      context: .
-      dockerfile: dockerfile.b
+      dockerfile: docker-contextB/dockerfile.b
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password

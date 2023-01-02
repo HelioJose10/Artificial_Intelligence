@@ -26,10 +26,7 @@ function uploadFile(name){
   
   //here - hash the file 
 
-  xhr.open("POST", "/upload.php"); //sending post request to the specified URL
-
-  //here - send another request with the hash of the file
-  //here - send another request with the info of the file (name, lastmodified, etc)
+  xhr.open('POST', '/upload.php', true); //sending post request to the specified URL
 
   xhr.upload.addEventListener("progress", ({loaded, total}) =>{ //file uploading progress event
     let fileLoaded = Math.floor((loaded / total) * 100);  //getting percentage of loaded file size
@@ -49,7 +46,7 @@ function uploadFile(name){
                             </div>
                           </div>
                         </li>`;
-    // uploadedArea.innerHTML = ""; //uncomment this line if you don't want to show upload history
+    //uploadedArea.innerHTML = ""; //uncomment this line if you don't want to show upload history
     uploadedArea.classList.add("onprogress");
     progressArea.innerHTML = progressHTML;
     if(loaded == total){
@@ -69,6 +66,7 @@ function uploadFile(name){
       uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML); //remove this line if you don't want to show upload history
     }
   });
+
   let data = new FormData(form); //FormData is an object to easily send form data
   xhr.send(data); //sending form data
 }

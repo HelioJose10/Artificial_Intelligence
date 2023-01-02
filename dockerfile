@@ -11,6 +11,8 @@ COPY ./web/php/*.php /usr/share/nginx/html/
 COPY ./web/assets/css/*.css /usr/share/nginx/html/
 COPY ./web/assets/colors/*.css /usr/share/nginx/html/
 COPY ./web/assets/js/*.js /usr/share/nginx/html/
+COPY ./web/assets/js/jquery.min.js /usr/share/nginx/html/
+COPY ./web/assets/js/jquery.sparkline.min.js /usr/share/nginx/html/
 COPY ./web/assets/plugins/*.js /usr/share/nginx/html/
 COPY ./web/assets/plugins/sidemenu/*.js /usr/share/nginx/html/
 

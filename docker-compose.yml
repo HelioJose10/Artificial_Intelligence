@@ -17,7 +17,15 @@ services:
     depends_on:
       app:
         condition: service_healthy
-
+  db_admin:
+    image: phpmyadmin/phpmyadmin:5
+    ports:
+      - '8081:80'
+    environment:
+      - PMA_HOST=databaseA
+      - PMA_ABSOLUTE_URI=http://localhost:8001/
+    volumes:
+      - db_admin_data:/var/www/html
   app:
     build:
       context: .
@@ -70,6 +78,7 @@ volumes:
     external: true
   dataB:
     external: true
+  db_admin_data:
 
 networks:
   app-network:

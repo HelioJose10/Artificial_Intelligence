@@ -29,7 +29,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: ./docker-contextNginx/dockerfile.php  
+      dockerfile: ./docker-contextNginx/dockerfile.php-fpm-mysql  
     volumes:
       - ./docker-contextNginx/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./web/html:/var/www/html

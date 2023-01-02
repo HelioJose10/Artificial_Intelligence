@@ -1,3 +1,4 @@
+
 const form = document.querySelector("form"),
 fileInput = document.querySelector(".file-input"),
 progressArea = document.querySelector(".progress-area"),
@@ -19,6 +20,13 @@ fileInput.onchange = ({target})=>{
     uploadFile(fileName); //calling uploadFile with passing file name as an argument
   }
 }
+let nome = document.getElementById('nomefile').value;
+nome = fileName;
+let currentDate = new Date();
+let cDay = currentDate.getDate();
+let cMonth = currentDate.getMonth() + 1;
+let cYear = currentDate.getFullYear();
+document.getElementById('data').value = "<b>" + cDay + "/" + cMonth + "/" + cYear + "</b>";
 
 // file upload function
 function uploadFile(name){

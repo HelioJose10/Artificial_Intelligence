@@ -59,9 +59,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Codigos Java</td>
-                                            <td>ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</td>
-                                            <td>21/12/2022</td>
+                                            <td id='nomefile'>Codigos Java</td>
+                                            <td id='hashfile'>ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</td>
+                                            <td id='data'>21/12/2022</td>
                                             <td><a
                                                     href="file:///Users/bolt_40n/Documents/GitHub/Artificial_Intelligence/web/html/edit-table.html">CodigosJava</a>
                                             </td>
@@ -81,7 +81,7 @@
                         <h3 class="card-title">Carregar Arquivo</h3>
                     </div>
                     <div class="wrapper">
-                        <form action="#" method="POST">
+                        <form action="#">
                             <input class="file-input" type="file" name="file" hidden value="field_value">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>Browse File to Upload</p>

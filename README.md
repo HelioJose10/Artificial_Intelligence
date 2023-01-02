@@ -1,4 +1,4 @@
-# PROJETO SISTEMAS DISTRIBUIDOS
+# PROJETO SISTEMAS DISTRIBUIDOS - João Pires, nº20200459
 
 Run this commands in order to launch the project
 
@@ -17,21 +17,24 @@ Run this commands in order to launch the project
 >docker-compose -p projsistemas  up
 
 
-To access databases directly use terminal 
-
->docker ps
-
->docker exec -it [db container id] bash
+#To access databases 
 
 >mysql -u root -p
 
 >password
 
-###
-RUN docker-php-ext-install mysqli
+#to set replication on 
 
---CREATE USER 'replication_user'@'%' IDENTIFIED BY 'password';
---GRANT REPLICATION SLAVE ON *.* TO 'replication_user'@'%';
---FLUSH TABLES WITH READ LOCK;
---SHOW MASTER STATUS;
---UNLOCK TABLES;
+>open mysql dbA and get log_file and log_pos
+
+>open mysql dbB and run createsB.sql code but input active log_file and log_pos values
+
+>START SLAVE;
+
+#to open main project page, might take some time to load conf files
+
+>localhost:8080/
+
+#to see result of file insert (incomplete version for lack of time)
+
+>localhost:8080/upload.php

@@ -1,17 +1,36 @@
-version: '3'
+version: '3.9'
 services:
   web:
     image: nginx 
-    build: 
-      dockerfile: dockerfile
+    #build: 
+      #dockerfile: dockerfile
     ports: 
-      - '80:80'
-    links:
-      - databaseA
+      - '8080:80'
+    volumes:
+      - ./docker-contextNginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./web/html:/var/www/html
+    working_dir: /var/www/html
     networks:
       - app-network
+    healthcheck:
+      test: curl --fail localhost/ping
+      interval: 30s
+      retries: 6
     depends_on:
-      - databaseA
+      app:
+        condition: service_healthy
+
+  app:
+    build:
+      context: .
+      dockerfile: ./docker-contextNginx/dockerfile.php  
+    volumes:
+      - ./docker-contextNginx/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      - ./web/html:/var/www/html
+    healthcheck:
+      test: php-fpm -t
+      interval: 60s
+      retries: 5
   databaseA:
     image: mysql 
     networks:
@@ -25,28 +44,28 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
-      - '3306:3306'
+      - '3309:3306'
     expose:
       - 3306
     volumes:
       - dataA:/var/lib/mysql
       - ./createsA.sql:/docker-entrypoint-initdb.d/createsA.sql
-#  databaseB:
-#    image: mysql:latest 
-#    build:
-#      dockerfile: docker-contextB/dockerfile.b
-#    restart: always
-#    environment:
-#      MYSQL_ROOT_PASSWORD: password
-
-#      MYSQL_ROOT_HOST: 'mysql'
-#    ports:
-#      - "3308:3306"
-#    expose:
-#      - 3306
-#    volumes:
-#      - dataB:/var/lib/mysql
-#      - ./createsB.sql:/docker-entrypoint-initdb.d/createsB.sql
+  databaseB:
+    image: mysql:latest 
+    networks:
+      - app-network
+    build:
+      dockerfile: docker-contextB/dockerfile.b
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: filesA
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3308:3306" 
+    volumes:
+      - dataB:/var/lib/mysql
 
 volumes:
   dataA:

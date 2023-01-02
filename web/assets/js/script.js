@@ -26,7 +26,7 @@ function uploadFile(name){
   
   //here - hash the file 
 
-  xhr.open("POST", "php/upload.php"); //sending post request to the specified URL
+  xhr.open("POST", "/upload.php"); //sending post request to the specified URL
 
   //here - send another request with the hash of the file
   //here - send another request with the info of the file (name, lastmodified, etc)

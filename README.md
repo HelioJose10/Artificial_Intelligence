@@ -14,7 +14,7 @@ Run this commands in order to launch the project
 
 #to run 
 
->docker-compose up
+>docker-compose -p projsistemas  up
 
 
 To access databases directly use terminal 
@@ -26,3 +26,12 @@ To access databases directly use terminal
 >mysql -u root -p
 
 >password
+
+###
+RUN docker-php-ext-install mysqli
+
+--CREATE USER 'replication_user'@'%' IDENTIFIED BY 'password';
+--GRANT REPLICATION SLAVE ON *.* TO 'replication_user'@'%';
+--FLUSH TABLES WITH READ LOCK;
+--SHOW MASTER STATUS;
+--UNLOCK TABLES;

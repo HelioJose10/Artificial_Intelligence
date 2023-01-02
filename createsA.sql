@@ -20,10 +20,7 @@ CREATE TABLE hashsA(
 CREATE TABLE updatesA(
     file_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     file_title CHAR(100) NOT NULL,
-    file_author CHAR(40) NOT NULL,
-    file_type CHAR(20) NOT NULL,
-    file_updated INTEGER NOT NULL,
-    submission_date DATE NOT NULL,
+    submission_date CHAR(30) NOT NULL,
     file_hash_fk INT NOT NULL,
     FOREIGN KEY (file_hash_fk) REFERENCES hashsA(hash_id) ON DELETE NO ACTION
 );
@@ -54,10 +51,8 @@ CREATE TABLE bchashsA(
 CREATE TABLE bcupdatesA(
     file_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     file_title CHAR(100) NOT NULL,
-    file_author CHAR(40) NOT NULL,
-    file_type CHAR(20) NOT NULL,
     file_updated INTEGER NOT NULL,
-    submission_date DATE NOT NULL,
+    submission_date CHAR(30) NOT NULL,
     file_hash_fk INT NOT NULL,
     FOREIGN KEY (file_hash_fk) REFERENCES bchashsA(hash_id) ON DELETE NO ACTION
 );

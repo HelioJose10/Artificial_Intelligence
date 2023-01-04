@@ -82,7 +82,7 @@
                     </div>
                     <div class="wrapper">
                         <form action="#">
-                            <input class="file-input" type="file" name="file" hidden value="field_value">
+                            <input class="file-input" type="file" name="file" hidden >
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>Browse File to Upload</p>
                         </form>

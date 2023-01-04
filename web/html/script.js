@@ -17,7 +17,7 @@ fileInput.onchange = ({target})=>{
       let splitName = fileName.split('.');
       fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
     }
-    uploadFile(fileName); //calling uploadFile with passing file name as an argument
+    uploadFile(fileName); //calling uploadFile with passing filename as an argument
   }
 }
 let nome = document.getElementById('nomefile').value;
@@ -32,9 +32,7 @@ document.getElementById('data').value = "<b>" + cDay + "/" + cMonth + "/" + cYea
 function uploadFile(name){
   let xhr = new XMLHttpRequest(); //creating new xhr object (AJAX)
   
-  //here - hash the file 
-
-  xhr.open('POST', '/upload.php', true); //sending post request to the specified URL
+  xhr.open("POST", "/upload.php"); //sending post request to the specified URL
 
   xhr.upload.addEventListener("progress", ({loaded, total}) =>{ //file uploading progress event
     let fileLoaded = Math.floor((loaded / total) * 100);  //getting percentage of loaded file size
@@ -77,4 +75,8 @@ function uploadFile(name){
 
   let data = new FormData(form); //FormData is an object to easily send form data
   xhr.send(data); //sending form data
+
+  xhr.onload = () => {
+    console.log(xhr.responseText)
+  }
 }

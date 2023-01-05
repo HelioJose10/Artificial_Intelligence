@@ -24,6 +24,7 @@ services:
       - PMA_ABSOLUTE_URI=http://localhost:8001/
     volumes:
       - db_admin_data:/var/www/html
+      - ./docker-contextNginx/php.ini-development:/usr/local/etc/php/php.ini-development
   app:
     build:
       context: .

@@ -4,6 +4,7 @@ fileInput = document.querySelector(".file-input"),
 progressArea = document.querySelector(".progress-area"),
 uploadedArea = document.querySelector(".uploaded-area");
 
+
 // form click event
 form.addEventListener("click", () =>{
   fileInput.click();
@@ -20,14 +21,6 @@ fileInput.onchange = ({target})=>{
     uploadFile(fileName); //calling uploadFile with passing filename as an argument
   }
 }
-let nome = document.getElementById('nomefile').value;
-nome = fileName;
-let currentDate = new Date();
-let cDay = currentDate.getDate();
-let cMonth = currentDate.getMonth() + 1;
-let cYear = currentDate.getFullYear();
-document.getElementById('data').value = "<b>" + cDay + "/" + cMonth + "/" + cYear + "</b>";
-
 // file upload function
 function uploadFile(name){
   let xhr = new XMLHttpRequest(); //creating new xhr object (AJAX)
@@ -78,5 +71,9 @@ function uploadFile(name){
 
   xhr.onload = () => {
     console.log(xhr.responseText)
+    //document.querySelector('.table-body').innerHTML += xhr.responseText;
+    $('.tablebody').append(xhr.responseText);
   }
+  
 }
+

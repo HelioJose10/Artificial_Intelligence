@@ -48,7 +48,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered border text-nowrap mb-0" id="basic-edit">
+                                <table class="table table-bordered border text-nowrap mb-0" id="mytable">
                                     <thead>
                                         <tr>
                                             <th>Nome</th>
@@ -57,15 +57,8 @@
                                             <th>Link</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td id='nomefile'>Codigos Java</td>
-                                            <td id='hashfile'>ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</td>
-                                            <td id='data'>21/12/2022</td>
-                                            <td><a
-                                                    href="file:///Users/bolt_40n/Documents/GitHub/Artificial_Intelligence/web/html/edit-table.html">CodigosJava</a>
-                                            </td>
-                                        </tr>
+                                    <tbody class="tablebody">
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -78,10 +71,10 @@
             <div class="row">
                 <div class="col-xl-12 col-md-12">
                     <div class="card-header">
-                        <h3 class="card-title">Carregar Arquivo</h3>
+                        
                     </div>
                     <div class="wrapper">
-                        <form action="#">
+                        <form action="#" enctype="multipart/form-data">
                             <input class="file-input" type="file" name="file" hidden >
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>Browse File to Upload</p>
@@ -122,6 +115,11 @@
             </div>  
         </div>  
         </div>    
+
+    <!-- CONTENT'S TABLE UPDATE JS -->
+    <script src="contentsScript.js"></script>   
+
+    <!-- FILE UPLOAD JS-->    
     <script src="script.js"></script>                
                         
     <!-- JQUERY JS -->

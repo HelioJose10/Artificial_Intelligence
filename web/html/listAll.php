@@ -5,7 +5,8 @@ $hostname = "databaseA";
 $username = "user";
 $password = "password"; 
 $database = "filesA";
-
+session_start();
+$id = $_COOKIE['fileID'];
 $conn = new mysqli($hostname, $username, $password, $database);
 
 //GET ALL DATA ON FILES SAVED:
@@ -18,7 +19,7 @@ while ($row = $result->fetch_assoc()){
     $table .= '<td>' . htmlspecialchars($row['submission_date']) . '</td>';
     $hash = $row['hash_1'] . $row['hash_2']; //concatenate the hash back
     $table .= '<td>' . htmlspecialchars($hash) . '</td>';
-    $table .= '<td>' . htmlspecialchars($row['file_content']) . '</td>';
+    $table .= '<td><form action="download.php" method="POST" id="download-form"><input type="hidden" name="file_id" value="' . $id . '"><input type="submit" value="DOWNLOAD"></form></td>';
     $table .= '</tr>';
     echo $table;
 }

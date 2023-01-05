@@ -38,6 +38,7 @@
   $result2 = $conn->query($queryFileId);
   $rowFile = $result2->fetch_assoc();
   $id = $rowFile['file_id'];
+  setcookie('fileID', $id, time() + 86400, '/');
   $value256 = hash_file('sha256', $tmp_name);
   //$sendBlob = http_build_query(array('id' => $id,'blob' => $blob));
   //$url = 'download.php?' . $sendBlob;
@@ -56,7 +57,7 @@
   $rowHash = $result4->fetch_assoc();
   $hash_id_return = $rowHash['hash_id'];
   //update information - updatesA
-  $queryInfo = "INSERT INTO updatesA(file_title, submission_date, file_hash_fk) VALUES('$file_up_name', '$sDate', '$hash_id_return')";
+  $queryInfo = "INSERT INTO updatesA(file_title, submission_date, file_hash_fk) VALUES('$file_name', '$sDate', '$hash_id_return')";
   $result5 = $conn->query($queryInfo);
 
   //update datatable
@@ -64,7 +65,7 @@
   $result = $conn->query($queryList);
   $row = $result->fetch_assoc();
   $hash = $row['hash_1'] . $row['hash_2']; //concatenate the hash back
-  $data = ['<tr>','<td>' . htmlspecialchars($row['file_title']) . '</td>','<td>' . htmlspecialchars($row['submission_date']) . '</td>','<td>' . htmlspecialchars($hash) . '</td>','<td><form action="download.php" method="POST"><input type="hidden" name="file_id" value="'. $id .'"><input type="submit" value="DOWNLOAD"></form></td>','</tr>'];
+  $data = ['<tr>','<td>' . htmlspecialchars($row['file_title']) . '</td>','<td>' . htmlspecialchars($row['submission_date']) . '</td>','<td>' . htmlspecialchars($hash) . '</td>','<td><form action="download.php" method="POST" id="download-form"><input type="hidden" name="file_id" value="'. $id .'"><input type="submit" value="DOWNLOAD"></form></td>','</tr>'];
   
   echo implode(' ', $data);
 

@@ -52,8 +52,8 @@
                                     <thead>
                                         <tr>
                                             <th>Nome</th>
-                                            <th>Hash</th>
-                                            <th>Data</th>
+                                            <th>DATA</th>
+                                            <th>256HASH</th>
                                             <th>Link</th>
                                         </tr>
                                     </thead>

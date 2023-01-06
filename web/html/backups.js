@@ -1,13 +1,15 @@
-bt1 = document.querySelector('.btncheck1');
-bt2 = document.querySelector('.btncheck2');
-bt3 = document.querySelector('.btncheck3');
+bt1 = document.getElementById('btncheck1');
+bt2 = document.getElementById('btncheck2');
+bt3 = document.getElementById('btncheck3');
 const xhr = new XMLHttpRequest();
-
+var flag = false;
 bt1.addEventListener('click', function() {
 
     if (this.checked) {
+      flag = true;
       var interval = setInterval(function(){xhr.open('GET', '/backups.php'); xhr.send();}, 30000);//every 30seconds 
     } else {
+      flag = false;
       clearInterval(interval);
     }
 

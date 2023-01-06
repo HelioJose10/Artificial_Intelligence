@@ -51,6 +51,6 @@ GRANT REPLICATION SLAVE ON *.* TO 'replication_user'@'%';
 FLUSH TABLES WITH READ LOCK;
 SHOW MASTER STATUS;
 UNLOCK TABLES;
-SET GLOBAL server_id = 3;
+SET GLOBAL server_id = 10;
                         
 

@@ -1,7 +1,6 @@
 <?php
 
     //error_reporting(E_ERROR);
-    session_start();
     $hostname = "databaseA";
     $username = "user";
     $password = "password"; 
@@ -9,19 +8,9 @@
     $backupdb = "backupA";
 
     //copy all data
-    exec("mysqldump -h databaseA -u user -p password filesA > dump.sql");
+    exec("mysqldump --user=root --password=password --host=filesA > dump.sql");
     //overwrite all data
-    exec("mysql -h databaseA -u user -p password backupA < dump.sql");
-
-
-
-
-
-
-
-
-
-
+    exec("mysql --user=root --password=password --host=backupA < dump.sql");
 
 
     /*

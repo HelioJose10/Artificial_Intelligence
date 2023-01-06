@@ -35,6 +35,4 @@ Run this commands in order to launch the project
 
 >localhost:8080/
 
-#to see result of file insert (incomplete version for lack of time)
 
->localhost:8080/upload.php

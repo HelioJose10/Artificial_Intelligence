@@ -97,10 +97,10 @@
                                         <div class="btn-list checkboxbtns">
                                             <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                                                 <input type="checkbox" class="btn-check" id="btncheck1">
-                                                <label class="btn btn-outline-primary" for="btncheck1">1 MIN</label>
+                                                <label class="btn btn-outline-primary" for="btncheck1">30 SECS</label>
             
                                                 <input type="checkbox" class="btn-check" id="btncheck2">
-                                                <label class="btn btn-outline-primary br-0" for="btncheck2">2 MIN</label>
+                                                <label class="btn btn-outline-primary br-0" for="btncheck2">1 MIN</label>
             
                                                 <input type="checkbox" class="btn-check" id="btncheck3">
                                                 <label class="btn btn-outline-primary" for="btncheck3">AUTO</label>
@@ -115,6 +115,9 @@
             </div>  
         </div>  
         </div>    
+
+    <!-- BACKUP'S CHOICE JS -->
+    <script src="backups.js"></script>   
 
     <!-- CONTENT'S TABLE UPDATE JS -->
     <script src="contentsScript.js"></script>   

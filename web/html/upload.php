@@ -1,6 +1,7 @@
 <?php
-    //error_reporting(E_ERROR);
     session_start();
+    //error_reporting(E_ERROR);
+    
     $hostname = "databaseA";
     $username = "user";
     $password = "password"; 
@@ -23,6 +24,7 @@
   setcookie('filetype', $mimetype, time() + 86400, '/');
   $error = $_FILES['file']['error'];
   $blob = file_get_contents($tmp_name);
+  //echo $error;
   //$blob = mysqli_real_escape_string($conn, $blob);
   //file - filesContentA
   $queryFile = "INSERT INTO filesContentA(file_content) VALUES('$blob');";
@@ -30,7 +32,7 @@
 
   if (!$result1) {
     echo "Error: " . mysqli_error($conn);
-}
+  }
 
  
   //get file_id from file uploaded

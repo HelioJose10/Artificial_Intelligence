@@ -12,21 +12,24 @@ services:
       test: curl --fail localhost/ping
       interval: 30s
       retries: 6
-    depends_on:
-      app:
-        condition: service_healthy
   db_admin:
     image: phpmyadmin/phpmyadmin:5
     ports:
       - '8081:80'
     environment:
-      - PMA_HOST=databaseA-1
+      - PMA_HOST=projsistemas-databaseA-1
       - PMA_ABSOLUTE_URI=http://localhost:8001/
+      - UPLOAD_LIMIT=100M
     volumes:
       - db_admin_data:/var/www/html
-      #- ./docker-contextNginx/php.ini-development:/usr/local/etc/php/php.ini-development
-      #- ./docker-contextNginx/php.ini-production:/usr/local/etc/php/php.ini-production
-  app:
+      - ./docker-contextNginx/uploads.ini:/usr/local/etc/php/php.ini
+      - ./docker-contextNginx/php.ini-development:/usr/local/etc/php/php.ini-development
+      - ./docker-contextNginx/php.ini-production:/usr/local/etc/php/php.ini-production
+      - ./docker-contextNginx/phpmyadmin-misc.ini:/usr/local/etc/php/conf.d/phpmyadmin-misc.ini
+      - ./docker-contextNginx/opache-recommended.ini:/usr/local/etc/php/conf.d/opache-recommended.ini
+
+
+  appmain:
     build:
       context: .
       dockerfile: php-fmp-msql/dockerfile  
@@ -37,6 +40,18 @@ services:
       test: php-fpm -t
       interval: 60s
       retries: 5
+
+  appbackup:
+    build:
+      context: .
+      dockerfile: php-fmp-msql/dockerfile  
+    volumes:
+      - ./docker-contextNginx/www.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      - ./web/html:/var/www/html
+    healthcheck:
+      test: php-fpm -t
+      interval: 60s
+      retries: 5    
   databaseA:
     image: mysql 
     build:
